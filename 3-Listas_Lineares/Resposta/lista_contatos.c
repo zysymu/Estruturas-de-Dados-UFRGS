@@ -60,7 +60,7 @@ int inserir (lista_contatos *l, contato novo) {
     }
     */
     
-    // array dinamico:
+    // ARRAY DINAMICO:
     if (tamanho(l) >= l->capacidade) {
         l->capacidade = 1.5 * l->capacidade;
 
@@ -83,17 +83,42 @@ int inserir (lista_contatos *l, contato novo) {
  * Remove um elemento em determinada posicao na lista de contatos.
  * Retorna 1 se a remocao foi bem sucedida e 0 caso contrario
  */
-int remover(lista_contatos *l, int pos);
+int remover (lista_contatos *l, int pos) {
+    if (pos < 0 || pos > l->nodos) return 0; // indice alem dos limites da lista
+    
+    // estamos considerando que a insercao eh somente no final da lista
+    for (int i=pos; i < l->nodos-1; i++) {
+        l->array_contato[i] = l->array_contato[i+1];
+    }
+
+    l->nodos -= 1;
+    return 1;
+}
 
 /**
  * Retorna a posicao do contato com o nome desejado, ou -1 se nao
  * encontrar
  */
-int buscar(lista_contatos *l, char *nome);
+int buscar (lista_contatos *l, char *nome) {
+    // busca sequencial
+    int i = 0;
+
+    while (i < l->nodos) {
+        if (strcmp(nome, l->array_contato[i].nome) == 0) return i; // contato encontrado!
+        else i++;
+    }
+
+    return -1; // contato nao encontrado apos buscar toda a lista
+
+}
 
 /**
  * Retorna o contato na posicao indicada ou NULL se a
  * posicao for invalida
  */
-contato* consultar(lista_contatos *l, int pos);
+contato* consultar (lista_contatos *l, int pos) {
+    if (pos < 0 || pos > l->nodos) return NULL; // indice alem dos limites da lista
+
+    return &l->array_contato[pos];
+}
 
