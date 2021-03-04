@@ -12,8 +12,8 @@ void inicializar (lista_contatos *l, int capacidade) {
     // usar malloc para criar array de tamanho `capacidade`
     l->array_contato = (contato*) malloc(l->capacidade * sizeof(contato));
     
-    if (l->array_contato == NULL) { 
-        printf("\ERRO: memoria nao alocada no malloc\n"); 
+    if (l->array_contato == NULL) {     
+        printf("\nERRO: memoria nao alocada no malloc\n"); 
         exit(0); 
     } 
   
@@ -55,12 +55,13 @@ int inserir (lista_contatos *l, contato novo) {
     // PADRAO:
     /*
     if (tamanho(l) >= l->capacidade) {
-        printf("ERRO: tentativa de colocar nodo alem do limite de capacidade do array\n");
+        printf("\nERRO: tentativa de colocar nodo alem do limite de capacidade do array\n");
         return 0;
     }
     */
     
     // ARRAY DINAMICO:
+
     if (tamanho(l) >= l->capacidade) {
         l->capacidade = 1.5 * l->capacidade;
 

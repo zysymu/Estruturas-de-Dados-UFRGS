@@ -9,7 +9,7 @@
 int main()
 {
     printf("-----PARTE 1-----\n");
-    printf("NECESSARIO UTILIZAR A PARTE `PADRAO` NA FUNCAO `inserir` NO ARQUIVO `lista_contatos.c");
+    printf("NECESSARIO UTILIZAR A PARTE `PADRAO` NA FUNCAO `inserir` NO ARQUIVO `lista_contatos.c`");
     lista_contatos amigos, contatos, outros_amigos;
     inicializar(&amigos, 3);
 
