@@ -1,0 +1,67 @@
+# depslib dependency file v1.0
+1522983789 source:c:\users\fulano\desktop\estatisticas\estatisticas.c
+	"estatisticas.h"
+	<math.h>
+	<stdlib.h>
+	<stdio.h>
+
+1522983777 c:\users\fulano\desktop\estatisticas\estatisticas.h
+	"lista.h"
+
+1522982454 c:\users\fulano\desktop\estatisticas\lista.h
+
+1522983284 source:c:\users\fulano\desktop\estatisticas\lista.c
+	"lista.h"
+	<stdlib.h>
+
+1522984343 source:c:\users\fulano\desktop\estatisticas\main.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+	"ui.h"
+	<string.h>
+
+1522983934 c:\users\fulano\desktop\estatisticas\ui.h
+	"lista.h"
+
+1522984457 source:c:\users\fulano\desktop\estatisticas\ui.c
+	"ui.h"
+	"lista.h"
+	"estatisticas.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1523020244 source:c:\users\fulano\desktop\estatisticas_full\estatisticas.c
+	"estatisticas.h"
+	<math.h>
+	<stdlib.h>
+	<stdio.h>
+
+1523020295 c:\users\fulano\desktop\estatisticas_full\estatisticas.h
+	"lista.h"
+
+1523021081 c:\users\fulano\desktop\estatisticas_full\lista.h
+
+1523018487 source:c:\users\fulano\desktop\estatisticas_full\main.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+	"ui.h"
+	<string.h>
+
+1523017173 c:\users\fulano\desktop\estatisticas_full\ui.h
+	"lista.h"
+
+1523019768 source:c:\users\fulano\desktop\estatisticas_full\ui.c
+	"ui.h"
+	"lista.h"
+	"estatisticas.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1523017026 source:c:\users\fulano\desktop\estatisticas_full\lista.c
+	"lista.h"
+	<stdlib.h>
+
