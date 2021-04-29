@@ -13,7 +13,7 @@
 - Em uma pilha iremos então inserir um elemento no início (topo) somente, remover um elemento do início somente e acessar somente o elemento do início.
 
 - Alocação estática: espaço de memória é alocado no momento da compilação. Exige a definição do número máximo de elementos da pilha. Temos elementos consecutivos na memória (array).
-- Alocação dinâmica: espaço de memória é alocado em tempo de execução. A pilha cresce a medida que novos elementos são armazenados e diminui à medida que elementos são removidos. Acesso encadeado: cada elemento pode estar em uma área distinta da memória, e para acessar um elemento temos de percorrer todos os seus antecessores na fila.
+- Alocação dinâmica: espaço de memória é alocado em tempo de execução. A pulha cresce a medida que novos elementos são armazenados e diminui à medida que elementos são removidos. Acesso encadeado: cada elemento pode estar em uma área distinta da memória, e para acessar um elemento temos de percorrer todos os seus antecessores na fila.
 
 - Nesse arquivo utilizamos a implementação dinâmica!
 */
@@ -23,15 +23,9 @@
 // PILHA.h /////////////////////////////////////////
 ////////////////////////////////////////////////////
 
-typedef struct aluno {
-    int matricula;
-    char nome[30];
-    float nota1, nota2, nota3;
-} aluno;
-
 // define o elemento da pilha
 typedef struct nodo {
-    aluno al;
+    int al;
     struct nodo* prox;
 } Nodo;
 
@@ -57,13 +51,10 @@ int checar_pilha_cheia (Pilha* p);
 int checar_pilha_vazia (Pilha* p);
 
 // insere elemento na pilha (insercao eh sempre no topo!!!)
-int inserir_pilha (Pilha* p, aluno novo);
+int inserir_pilha (Pilha* p, int novo);
 
 // remove elemento na pilha (remocao eh sempre no topo!!!)
 int remover_pilha (Pilha* p);
-
-// consulta a pilha (somente consultamos o elemento no topo)
-int consulta_pilha (Pilha* p, aluno* saida);
 
 // printa elementos da pilha
 void printa_pilha (Pilha* p);
@@ -119,7 +110,7 @@ int checar_pilha_vazia (Pilha* p) {
     return 0;
 }
 
-int inserir_pilha (Pilha* p, aluno novo) {
+int inserir_pilha (Pilha* p, int novo) {
     if (p == NULL) return 0;
     
     Nodo* nodo_novo = (Nodo*) malloc(sizeof(Nodo));
@@ -143,22 +134,15 @@ int remover_pilha (Pilha* p) {
     return 1;
 }
 
-int consulta_pilha (Pilha* p, aluno* saida) {
-    if (p == NULL) return 0;
-    if (checar_pilha_vazia(p)) return 0;
-
-    *saida = p->topo->al;
-    return 1;
-}
-
 void printa_pilha (Pilha* p) {
     Nodo* atual = p->topo;
 
     while (atual != NULL) {
-        printf("%d, %s, %f, %f, %f\n", atual->al.matricula, atual->al.nome, atual->al.nota1, atual->al.nota2, atual->al.nota3);
+        printf("%d, ", atual->al);
         atual = atual->prox;
     }
 }
+
 
 ////////////////////////////////////////////////////
 // main.c //////////////////////////////////////////
@@ -166,25 +150,84 @@ void printa_pilha (Pilha* p) {
 
 int main()
 {
-    Pilha p;
-
-    aluno a = {1111, "Ann Anny", 10., 10., 9.5};
-    aluno b = {1115, "Bob Bobby", 6., 8., 5.};
-    aluno c = {1120, "Chase Chassy", 7., 7.6, 10.};
-    aluno d = {1117, "Dan Danny", 4., 1., 0.};
+    Pilha p1;
     
-    inicializar_pilha(&p);
+    inicializar_pilha(&p1);
 
-    inserir_pilha(&p, a);
-    inserir_pilha(&p, b);
-    inserir_pilha(&p, c);
-    remover_pilha(&p);
+    inserir_pilha (&p1, 2); //b
+    printf("\n==============\n");
+    printa_pilha(&p1);
 
-    printf("%d\n", tamanho_pilha(&p));
-    printa_pilha(&p);
-    printf("-------------------");
-    remover_pilha(&p);
+    printf("\n==============\n"); //cheia
+    printa_pilha(&p1);
 
-    printf("%d\n", tamanho_pilha(&p));
-    printa_pilha(&p);
+    inserir_pilha (&p1, 5); //s
+    printf("\n==============\n");
+    printa_pilha(&p1);
+
+    inserir_pilha (&p1, 1); //a
+    printf("\n==============\n");
+    printa_pilha(&p1);
+    
+    inserir_pilha (&p1, 3); // c
+    printf("\n==============\n");
+    printa_pilha(&p1);
+
+    remover_pilha(&p1);
+    printf("\n==============\n");
+    printa_pilha(&p1);
+
+    remover_pilha(&p1);
+    printf("\n==============\n");
+    printa_pilha(&p1);
+
+    inserir_pilha (&p1, 8); //h
+    printf("\n==============\n");
+    printa_pilha(&p1);
+
+    inserir_pilha (&p1, 4); //d
+    printf("\n==============\n");
+    printa_pilha(&p1);
+
+    inserir_pilha (&p1, 6); //f
+    printf("\n==============\n");
+    printa_pilha(&p1);
+
+    remover_pilha(&p1);
+    printf("\n==============\n");
+    printa_pilha(&p1);
+
+    inserir_pilha (&p1, 11); //n
+    printf("\n==============\n");
+    printa_pilha(&p1);
+
+    inserir_pilha (&p1, 2); //b
+    printf("\n==============\n");
+    printa_pilha(&p1);
+
+    printf("\n==============\n");
+    printa_pilha(&p1); // cheia
+
+    remover_pilha(&p1);
+    printf("\n==============\n");
+    printa_pilha(&p1);
+
+    inserir_pilha (&p1, 10); //m
+    printf("\n==============\n");
+    printa_pilha(&p1);
+
+    remover_pilha(&p1);
+    printf("\n==============\n");
+    printa_pilha(&p1);
+
+    remover_pilha(&p1);
+    printf("\n==============\n");
+    printa_pilha(&p1);
+
+    remover_pilha(&p1);
+    printf("\n==============\n");
+    printa_pilha(&p1);
+
+    printf("\n==============\n");
+    printa_pilha(&p1); // vazia
 }    
